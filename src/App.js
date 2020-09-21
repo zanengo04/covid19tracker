@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react';
 
 import styles from './App.module.css'
 import {fetchData} from './api'
+import {fetchCustomData} from './api'
 import {Cards, Chart, CountryPicker} from './Components'
 
 function App() {
   const [data,setData] = useState('')
-  const [country,setCountry] = useState('')
   useEffect(() => {
     async function fetchAPI() {
       const data = await fetchData()
@@ -15,7 +15,8 @@ function App() {
     fetchAPI()
   },[]);
   const handleCountryChange = async(country) =>{
-    console.log(country)
+    const fetchedData = await fetchCustomData(country)
+    setData(fetchedData)
   }
   return (
     <div className={styles.container}>

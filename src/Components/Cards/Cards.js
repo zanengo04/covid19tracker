@@ -8,7 +8,7 @@ import cx from 'classnames'
 export default function Cards({data:
     {NewConfirmed, NewDeaths, NewRecovered, TotalConfirmed,TotalDeaths,TotalRecovered, CurrentDate}
     }) {
-    if (!TotalConfirmed){
+    if (!NewConfirmed){
         return 'Loading...'
     }
     return (

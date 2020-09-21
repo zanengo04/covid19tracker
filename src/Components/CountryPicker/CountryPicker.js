@@ -19,7 +19,7 @@ export default function CountryPicker({handleCountryChange}) {
                 {countries.map((countryData, i) => 
                     <option
                         key={i} 
-                        value={countryData.country}>{countryData.country}</option>)}
+                        value={countryData.slug}>{countryData.country}</option>)}
             </NativeSelect>
         </FormControl>
     )
