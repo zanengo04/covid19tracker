@@ -6,6 +6,7 @@ import {Cards, Chart, CountryPicker} from './Components'
 
 function App() {
   const [data,setData] = useState('')
+  const [country,setCountry] = useState('')
   useEffect(() => {
     async function fetchAPI() {
       const data = await fetchData()
@@ -13,10 +14,13 @@ function App() {
     }
     fetchAPI()
   },[]);
+  const handleCountryChange = async(country) =>{
+    console.log(country)
+  }
   return (
     <div className={styles.container}>
       <Cards data={data}/>
-      <CountryPicker />
+      <CountryPicker handleCountryChange={handleCountryChange}/>
       <Chart />
     </div>
   );

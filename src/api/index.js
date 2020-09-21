@@ -33,3 +33,17 @@ export const fetchDailyData = async () =>{
         
     }
 }
+
+const countryURL ='https://api.covid19api.com/countries'
+export const fetchedCountries = async() =>{
+    try {
+        const {data} = await axios.get(countryURL)
+        const modifiedData = data.map(countryData => ({
+            country: countryData.Country,
+            slug: countryData.Slug,
+        }))
+        return modifiedData
+    } catch (error) {
+        
+    }
+}
