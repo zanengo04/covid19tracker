@@ -15,3 +15,20 @@ export const fetchData = async () => {
         
     }
 }
+
+const urlDaily ='https://corona-api.com/timeline'
+export const fetchDailyData = async () =>{
+    try {
+        const {data:{data}} = await axios.get(urlDaily)
+        const {data:{data:[{date}]}} = await axios.get(urlDaily)
+        const modifiedData = data.map(dailyData => ({
+            confirmed: dailyData.confirmed,
+            deaths: dailyData.deaths,
+            recovered: dailyData.recovered,
+            date: dailyData.date
+        }))
+        return modifiedData
+    } catch (error) {
+        
+    }
+}
