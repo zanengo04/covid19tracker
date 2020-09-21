@@ -20,14 +20,15 @@ const urlDaily ='https://corona-api.com/timeline'
 export const fetchDailyData = async () =>{
     try {
         const {data:{data}} = await axios.get(urlDaily)
-        const {data:{data:[{date}]}} = await axios.get(urlDaily)
-        const modifiedData = data.map(dailyData => ({
+        const filteredData = data.filter(dailyData => dailyData.date!=='2020-08-17')
+        const modifiedData = filteredData.map(dailyData => ({
             confirmed: dailyData.confirmed,
             deaths: dailyData.deaths,
             recovered: dailyData.recovered,
             date: dailyData.date
         }))
-        return modifiedData
+        const reversedData = modifiedData.reverse()
+        return reversedData
     } catch (error) {
         
     }
