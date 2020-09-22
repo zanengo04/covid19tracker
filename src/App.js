@@ -15,8 +15,7 @@ function App() {
     fetchAPI()
   },[]);
   const handleCountryChange = async(country) =>{
-    const fetchedData = await fetchCustomData(country)
-    setData(fetchedData)
+    country =="Global" ? setData(await fetchData()) :setData(await fetchCustomData(country))
   }
   return (
     <div className={styles.container}>

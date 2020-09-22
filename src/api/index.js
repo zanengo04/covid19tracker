@@ -79,20 +79,16 @@ export const fetchCustomData = async (country) => {
     const customizedURL = `${customURL}${country}`
     try {
         const {data} = await axios.get(customizedURL)
-        const modifiedData = data.length ? data.map(countryData => ({
+        const modifiedData = data.map(countryData => ({
             TotalConfirmed: countryData.Confirmed,
             TotalDeaths: countryData.Deaths,
             TotalRecovered: countryData.Recovered,
             CurrentDate: countryData.Active,
             date: countryData.Date,
-        })):{TotalConfirmed: '',
-            TotalDeaths: '',
-            TotalRecovered: '',
-            CurrentDate:'',
-            date: '',}
+        }))
         const {Confirmed:TotalConfirmed, Deaths:TotalDeaths ,Recovered:TotalRecovered} =
             data.slice(-1)[0]?data.slice(-1)[0]:null
-        return modifiedData
+        return {modifiedData, TotalDeaths, TotalConfirmed, TotalRecovered}
     } catch (error) {
         
     }
