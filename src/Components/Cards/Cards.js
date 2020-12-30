@@ -2,7 +2,7 @@ import React from 'react'
 
 import CountUp from 'react-countup';
 import styles from './Cards.module.css'
-import {Card,CardContent, Typography, Grid, StylesProvider } from '@material-ui/core'
+import {Card,CardContent, Typography, Grid } from '@material-ui/core'
 import cx from 'classnames'
 
 export default function Cards({data:
